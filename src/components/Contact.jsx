@@ -48,7 +48,7 @@ export const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: Phone, label: 'Phone', value: '(555) 123-4567' },
+    { icon: Phone, label: 'Phone', value: '(303) 622-8595' },
     { icon: Mail, label: 'Email', value: 'chi@fixerupper.com' },
     { icon: MapPin, label: 'Service Area', value: 'Your Neighborhood & Beyond' },
   ];

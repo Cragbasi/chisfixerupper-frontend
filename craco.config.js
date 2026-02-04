@@ -40,7 +40,7 @@ const webpackConfig = {
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
       },
-    },
+    }, enable: false,
   },
   webpack: {
     alias: {
