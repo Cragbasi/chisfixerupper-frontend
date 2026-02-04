@@ -109,38 +109,86 @@ export const Gallery = () => {
         console.error('Error fetching gallery:', error);
         // Fallback data
         setGalleryItems([
-          {
+             {
             id: '1',
+            title: 'Toilet Replacement & Tiling',
+            description: 'Complete toilet replacement with new tiling and fixtures',
+            service_type: 'Plumbing',
+            before_image: "/assets/toiletBefore.png",
+            after_image:  "/assets/toiletAfter.png",
+          },
+       
+                 {
+            id: '2',
+            title: 'Roof Replacement & Landscaping',
+            description: 'Complete roof replacement with high-quality materials and landscaping cleanup',
+            service_type: 'Fixer Upper',
+            before_image: "/assets/houseBefore.jpg",
+            after_image:  "/assets/houseAfter.jpg",
+          },
+                
+     
+            {
+            id: '3',
+            title: 'Window and Door Replacement',
+            description: 'Energy-efficient window and door installation',
+            service_type: 'Windows and Doors',
+            before_image: "/assets/windowBefore.jpg",
+            after_image:  "/assets/windowAfter.jpeg",
+          },
+                 {
+            id: '4',
+            title: 'Roof Repair & Maintenance',
+            description: 'Roof leak repair and preventive maintenance services',
+            service_type: 'Roof Repair',
+            before_image: "/assets/ventBefore.jpg",
+            after_image:  "/assets/ventAfter2.jpg",
+          },
+                 {
+            id: '5',
+            title: 'Pipe Repair & Overhaul',
+            description: 'Pipe leak repair and fixture replacement',
+            service_type: 'Plumbing',
+             before_image: "/assets/pipeBefore.jpg",
+            after_image: "/assets/pipeAfter.jpg",
+             },
+                {
+            id: '6',
             title: 'Kitchen Cabinet Refinishing',
             description: 'Complete cabinet refinishing with new hardware installation',
             service_type: 'Cabinets',
-            before_image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
-            after_image: 'https://images.unsplash.com/photo-1556909114-44e3e70034e2?w=800',
+           before_image: 'https://plus.unsplash.com/premium_photo-1733342541690-01c34a234951?q=80&w=1568&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            after_image: 'https://images.unsplash.com/photo-1719569019031-ca8fb2911e2d?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+         
           },
           {
-            id: '2',
-            title: 'Interior Wall Repair & Paint',
-            description: 'Drywall repair and fresh coat of premium paint',
-            service_type: 'Painting',
-            before_image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800',
-            after_image: 'https://images.unsplash.com/photo-1615529328331-f8917597711f?w=800',
-          },
-          {
-            id: '3',
-            title: 'Bathroom Plumbing Overhaul',
-            description: 'Complete pipe replacement and fixture installation',
+            id: '7',
+            title: 'Bathroom Remodeling',
+            description: 'Complete bathroom remodeling with new fixtures and tiles',
             service_type: 'Plumbing',
             before_image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
             after_image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
           },
+         
           {
-            id: '4',
+            id: '8',
             title: 'Hardwood Floor Restoration',
             description: 'Sanding, staining, and finishing of hardwood floors',
             service_type: 'Flooring',
-            before_image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+            before_image: 'https://images.unsplash.com/photo-1764150506842-4bbea42a9693?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             after_image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800',
           },
+           
+               {
+            id: '9',
+            title: 'Interior Wall Repair & Paint',
+            description: 'Drywall repair and fresh coat of premium paint',
+            service_type: 'Painting',
+            before_image: 'https://plus.unsplash.com/premium_photo-1729005325786-d9d6ff6d0438?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            after_image: '/assets/wallAfter.jpg',
+          },
+       
+        
         ]);
       } finally {
         setLoading(false);

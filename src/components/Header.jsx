@@ -87,10 +87,10 @@ export const Header = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-border/40"
+            className="md:hidden py-4 border-t border-border/40 "
             data-testid="mobile-nav"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 bg-background rounded-lg p-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}

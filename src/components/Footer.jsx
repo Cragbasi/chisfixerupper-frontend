@@ -112,11 +112,11 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-3 text-sm">
                 <Phone className="w-4 h-4 text-accent" />
-                <span className="text-primary-foreground/70">(555) 123-4567</span>
+                <span className="text-primary-foreground/70">(303) 622-8595</span>
               </li>
               <li className="flex items-center gap-3 text-sm">
                 <Mail className="w-4 h-4 text-accent" />
-                <span className="text-primary-foreground/70">chi@fixerupper.com</span>
+                <span className="text-primary-foreground/70">chi@chisfixerupper.com</span>
               </li>
               <li className="flex items-center gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-accent" />
