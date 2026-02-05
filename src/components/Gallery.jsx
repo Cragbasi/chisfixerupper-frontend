@@ -100,8 +100,11 @@ export const Gallery = () => {
   useEffect(() => {
     const fetchGallery = async () => {
       try {
+        // First clear existing gallery data
+        await axios.delete(`${API}/gallery`);
         // First seed the data
         await axios.post(`${API}/seed`);
+
         // Then fetch gallery items
         const response = await axios.get(`${API}/gallery`);
         setGalleryItems(response.data);
