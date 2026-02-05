@@ -101,7 +101,7 @@ export const Gallery = () => {
     const fetchGallery = async () => {
       try {
         // First seed the data
-        // await axios.post(`${API}/seed`);
+        await axios.post(`${API}/seed`);
         // Then fetch gallery items
         const response = await axios.get(`${API}/gallery`);
         setGalleryItems(response.data);
