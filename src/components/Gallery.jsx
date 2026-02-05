@@ -114,8 +114,8 @@ export const Gallery = () => {
             title: 'Toilet Replacement & Tiling',
             description: 'Complete toilet replacement with new tiling and fixtures',
             service_type: 'Plumbing',
-            before_image: "/assets/toiletBefore.png",
-            after_image:  "/assets/toiletAfter.png",
+            before_image: "/assets/toiletBefore.PNG",
+            after_image:  "/assets/toiletAfter.PNG",
           },
        
                  {
