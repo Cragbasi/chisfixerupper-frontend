@@ -45,22 +45,43 @@ const BeforeAfterCard = ({ item, index }) => {
               />
             </div>
             {/* Slider Line */}
-            <div 
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10"
-              style={{ left: `${sliderValue[0]}%`, transform: 'translateX(-50%)' }}
-            >
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
-                <ArrowLeftRight className="w-5 h-5 text-primary" />
-              </div>
-            </div>
-            {/* Labels */}
-            <div className="absolute top-4 left-4 z-20">
-              <Badge className="bg-secondary text-secondary-foreground">Before</Badge>
-            </div>
-            <div className="absolute top-4 right-4 z-20">
-              <Badge className="bg-accent text-accent-foreground">After</Badge>
-            </div>
+            {/* Slider Line */}
+
+
+<motion.div
+  className="absolute top-0 bottom-0 w-1 bg-white shadow-lg z-10"
+  style={{ left: `${sliderValue[0]}%`, transform: "translateX(-50%)" }}
+>
+  {/* Wrapper stays centered and NEVER moves */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    
+    {/* Draggable element inside wrapper */}
+    <motion.div
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0}
+      onDrag={(event, info) => {
+        const container = event.target.closest(".relative");
+        if (!container) return;
+
+        const rect = container.getBoundingClientRect();
+        const x = info.point.x - rect.left;
+        const percent = Math.min(95, Math.max(5, (x / rect.width) * 100));
+
+        setSliderValue([percent]);
+      }}
+      className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer"
+    >
+      <ArrowLeftRight className="w-5 h-5 text-primary" />
+    </motion.div>
+
+  </div>
+</motion.div>
+
           </div>
+
+         
+
           
           {/* Slider Control */}
           <div className="px-6 py-3 bg-muted/30">
