@@ -97,109 +97,208 @@ export const Gallery = () => {
   const [galleryItems, setGalleryItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchGallery = async () => {
-      try {
-        // First clear existing gallery data
-        await axios.delete(`${API}/gallery`);
-        // First seed the data
-        await axios.post(`${API}/seed`);
+  // useEffect(() => {
+  //   const fetchGallery = async () => { 
+  //     try {
+  //       // First clear existing gallery data
+  //       await axios.delete(`${API}/gallery`);
+  //       // First seed the data
+  //       await axios.post(`${API}/seed`);
 
-        // Then fetch gallery items
-        const response = await axios.get(`${API}/gallery`);
-        setGalleryItems(response.data);
-      } catch (error) {
-        console.error('Error fetching gallery:', error);
-        // Fallback data
-        setGalleryItems([
-             {
-            id: '1',
-            title: 'Toilet Replacement & Tiling',
-            description: 'Complete toilet replacement with new tiling and fixtures',
-            service_type: 'Plumbing',
-            before_image: "/assets/toiletBefore.PNG",
-            after_image:  "/assets/toiletAfter.PNG",
-          },
+  //       // Then fetch gallery items
+  //       const response = await axios.get(`${API}/gallery`);
+  //       setGalleryItems(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching gallery:', error);
+  //       // Fallback data
+  //       setGalleryItems([
+  //            {
+  //           id: '1',
+  //           title: 'Toilet Replacement & Tiling',
+  //           description: 'Complete toilet replacement with new tiling and fixtures',
+  //           service_type: 'Plumbing',
+  //           before_image: "/assets/toiletBefore.PNG",
+  //           after_image:  "/assets/toiletAfter.PNG",
+  //         },
        
-                 {
-            id: '2',
-            title: 'Roof Replacement & Landscaping',
-            description: 'Complete roof replacement with high-quality materials and landscaping cleanup',
-            service_type: 'Fixer Upper',
-            before_image: "/assets/houseBefore.jpg",
-            after_image:  "/assets/houseAfter.jpg",
-          },
+  //                {
+  //           id: '2',
+  //           title: 'Roof Replacement & Landscaping',
+  //           description: 'Complete roof replacement with high-quality materials and landscaping cleanup',
+  //           service_type: 'Fixer Upper',
+  //           before_image: "/assets/houseBefore.jpg",
+  //           after_image:  "/assets/houseAfter.jpg",
+  //         },
                 
      
-            {
-            id: '3',
-            title: 'Window and Door Replacement',
-            description: 'Energy-efficient window and door installation',
-            service_type: 'Windows and Doors',
-            before_image: "/assets/windowBefore.jpg",
-            after_image:  "/assets/windowAfter.jpeg",
-          },
-                 {
-            id: '4',
-            title: 'Roof Repair & Maintenance',
-            description: 'Roof leak repair and preventive maintenance services',
-            service_type: 'Roof Repair',
-            before_image: "/assets/ventBefore.jpg",
-            after_image:  "/assets/ventAfter2.jpg",
-          },
-                 {
-            id: '5',
-            title: 'Pipe Repair & Overhaul',
-            description: 'Pipe leak repair and fixture replacement',
-            service_type: 'Plumbing',
-             before_image: "/assets/pipeBefore.jpg",
-            after_image: "/assets/pipeAfter.jpg",
-             },
-                {
-            id: '6',
-            title: 'Kitchen Cabinet Refinishing',
-            description: 'Complete cabinet refinishing with new hardware installation',
-            service_type: 'Cabinets',
-           before_image: 'https://plus.unsplash.com/premium_photo-1733342541690-01c34a234951?q=80&w=1568&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            after_image: 'https://images.unsplash.com/photo-1719569019031-ca8fb2911e2d?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //           {
+  //           id: '3',
+  //           title: 'Window and Door Replacement',
+  //           description: 'Energy-efficient window and door installation',
+  //           service_type: 'Windows and Doors',
+  //           before_image: "/assets/windowBefore.jpg",
+  //           after_image:  "/assets/windowAfter.jpeg",
+  //         },
+  //                {
+  //           id: '4',
+  //           title: 'Roof Repair & Maintenance',
+  //           description: 'Roof leak repair and preventive maintenance services',
+  //           service_type: 'Roof Repair',
+  //           before_image: "/assets/ventBefore.jpg",
+  //           after_image:  "/assets/ventAfter2.jpg",
+  //         },
+  //                {
+  //           id: '5',
+  //           title: 'Pipe Repair & Overhaul',
+  //           description: 'Pipe leak repair and fixture replacement',
+  //           service_type: 'Plumbing',
+  //            before_image: "/assets/pipeBefore.jpg",
+  //           after_image: "/assets/pipeAfter.jpg",
+  //            },
+  //               {
+  //           id: '6',
+  //           title: 'Kitchen Cabinet Refinishing',
+  //           description: 'Complete cabinet refinishing with new hardware installation',
+  //           service_type: 'Cabinets',
+  //          before_image: 'https://plus.unsplash.com/premium_photo-1733342541690-01c34a234951?q=80&w=1568&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //           after_image: 'https://images.unsplash.com/photo-1719569019031-ca8fb2911e2d?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
          
-          },
-          {
-            id: '7',
-            title: 'Bathroom Remodeling',
-            description: 'Complete bathroom remodeling with new fixtures and tiles',
-            service_type: 'Plumbing',
-            before_image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
-            after_image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
-          },
+  //         },
+  //         {
+  //           id: '7',
+  //           title: 'Bathroom Remodeling',
+  //           description: 'Complete bathroom remodeling with new fixtures and tiles',
+  //           service_type: 'Plumbing',
+  //           before_image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
+  //           after_image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+  //         },
          
-          {
-            id: '8',
-            title: 'Hardwood Floor Restoration',
-            description: 'Sanding, staining, and finishing of hardwood floors',
-            service_type: 'Flooring',
-            before_image: 'https://images.unsplash.com/photo-1764150506842-4bbea42a9693?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            after_image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800',
-          },
+  //         {
+  //           id: '8',
+  //           title: 'Hardwood Floor Restoration',
+  //           description: 'Sanding, staining, and finishing of hardwood floors',
+  //           service_type: 'Flooring',
+  //           before_image: 'https://images.unsplash.com/photo-1764150506842-4bbea42a9693?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //           after_image: 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=800',
+  //         },
            
-               {
-            id: '9',
-            title: 'Interior Wall Repair & Paint',
-            description: 'Drywall repair and fresh coat of premium paint',
-            service_type: 'Painting',
-            before_image: 'https://plus.unsplash.com/premium_photo-1729005325786-d9d6ff6d0438?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-            after_image: '/assets/wallAfter.jpg',
-          },
+  //              {
+  //           id: '9',
+  //           title: 'Interior Wall Repair & Paint',
+  //           description: 'Drywall repair and fresh coat of premium paint',
+  //           service_type: 'Painting',
+  //           before_image: 'https://plus.unsplash.com/premium_photo-1729005325786-d9d6ff6d0438?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //           after_image: '/assets/wallAfter.jpg',
+  //         },
        
         
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  //       ]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchGallery();
-  }, []);
+  //   fetchGallery();
+  // }, []);
+
+  const FALLBACK_GALLERY = [
+  {
+    id: '1',
+    title: 'Toilet Replacement & Tiling',
+    description: 'Complete toilet replacement with new tiling and fixtures',
+    service_type: 'Plumbing',
+    before_image: "/assets/toiletBefore.PNG",
+    after_image: "/assets/toiletAfter.PNG",
+  },
+  {
+    id: '2',
+    title: 'Roof Replacement & Landscaping',
+    description: 'Complete roof replacement with high-quality materials and landscaping cleanup',
+    service_type: 'Fixer Upper',
+    before_image: "/assets/houseBefore.jpg",
+    after_image: "/assets/houseAfter.jpg",
+  },
+  {
+    id: '3',
+    title: 'Window and Door Replacement',
+    description: 'Energy-efficient window and door installation',
+    service_type: 'Windows and Doors',
+    before_image: "/assets/windowBefore.jpg",
+    after_image: "/assets/windowAfter.jpeg",
+  },
+  {
+    id: '4',
+    title: 'Roof Repair & Maintenance',
+    description: 'Roof leak repair and preventive maintenance services',
+    service_type: 'Roof Repair',
+    before_image: "/assets/ventBefore.jpg",
+    after_image: "/assets/ventAfter2.jpg",
+  },
+  {
+    id: '5',
+    title: 'Pipe Repair & Overhaul',
+    description: 'Pipe leak repair and fixture replacement',
+    service_type: 'Plumbing',
+    before_image: "/assets/pipeBefore.jpg",
+    after_image: "/assets/pipeAfter.jpg",
+  },
+  {
+    id: '6',
+    title: 'Kitchen Cabinet Refinishing',
+    description: 'Complete cabinet refinishing with new hardware installation',
+    service_type: 'Cabinets',
+    before_image: "https://plus.unsplash.com/premium_photo-1733342541690-01c34a234951?q=80&w=1568&auto=format&fit=crop",
+    after_image: "https://images.unsplash.com/photo-1719569019031-ca8fb2911e2d?q=80&w=1742&auto=format&fit=crop",
+  },
+  {
+    id: '7',
+    title: 'Bathroom Remodeling',
+    description: 'Complete bathroom remodeling with new fixtures and tiles',
+    service_type: 'Plumbing',
+    before_image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800",
+    after_image: "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800",
+  },
+  {
+    id: '8',
+    title: 'Hardwood Floor Restoration',
+    description: 'New installation, sanding, staining, and finishing of hardwood floors',
+    service_type: 'Flooring',
+    before_image: "https://images.unsplash.com/photo-1748927440672-4d27a925622c?q=80&w=2062&auto=format&fit=crop",
+    after_image: "https://images.unsplash.com/photo-1665507299417-0985dc338ec7?q=80&w=2940&auto=format&fit=crop",
+  },
+  {
+    id: '9',
+    title: 'Interior Remodel & Paint',
+    description: 'Flooring, drywall repair and fresh coat of premium paint',
+    service_type: 'Remodeling',
+    before_image: "https://plus.unsplash.com/premium_photo-1729005325786-d9d6ff6d0438?q=80&w=1740&auto=format&fit=crop",
+    after_image: "/assets/wallAfter.jpg",
+  }
+];
+
+useEffect(() => {
+  // 1. Show fallback instantly
+  setGalleryItems(FALLBACK_GALLERY);
+  setLoading(false);
+
+  // 2. Fetch backend in background
+  const fetchGallery = async () => {
+    try {
+      // Clear + reseed backend
+      await axios.delete(`${API}/gallery`);
+      await axios.post(`${API}/seed`);
+
+      // Fetch updated gallery
+      const response = await axios.get(`${API}/gallery`);
+      setGalleryItems(response.data);
+    } catch (error) {
+      console.error("Error fetching gallery:", error);
+      // Fallback already shown
+    }
+  };
+
+  fetchGallery();
+}, []);
 
   return (
     <section 
