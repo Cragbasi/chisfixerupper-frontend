@@ -8,6 +8,41 @@ import axios from 'axios';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+const FALLBACK_TESTIMONIALS = [
+  {
+    id: '1',
+    name: 'Sarah Johnson',
+    rating: 5,
+    comment:
+      "Chi fixed our leaking roof in no time! Professional, affordable, and the quality is outstanding. Highly recommend!",
+    service_type: 'Roof Repair',
+  },
+  {
+    id: '2',
+    name: 'Michael Chen',
+    rating: 5,
+    comment:
+      "Our kitchen cabinets look brand new after Chi's work. He's meticulous and his prices are very fair.",
+    service_type: 'Cabinets',
+  },
+  {
+    id: '3',
+    name: 'Emily Rodriguez',
+    rating: 5,
+    comment:
+      "Best plumber in the neighborhood! Fixed our bathroom pipes and even gave us tips to prevent future issues.",
+    service_type: 'Plumbing',
+  },
+  {
+    id: '4',
+    name: 'David Thompson',
+    rating: 5,
+    comment:
+      "Chi painted our entire house interior. The attention to detail is incredible. Worth every penny!",
+    service_type: 'Painting',
+  },
+];
+
 const StarRating = ({ rating }) => {
   return (
     <div className="flex gap-1">
@@ -23,55 +58,76 @@ const StarRating = ({ rating }) => {
   );
 };
 
+
+
 export const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await axios.get(`${API}/testimonials`);
-        setTestimonials(response.data);
-      } catch (error) {
-        console.error('Error fetching testimonials:', error);
-        // Fallback data
-        setTestimonials([
-          {
-            id: '1',
-            name: 'Sarah Johnson',
-            rating: 5,
-            comment: "Chi fixed our leaking roof in no time! Professional, affordable, and the quality is outstanding. Highly recommend!",
-            service_type: 'Roof Repair',
-          },
-          {
-            id: '2',
-            name: 'Michael Chen',
-            rating: 5,
-            comment: "Our kitchen cabinets look brand new after Chi's work. He's meticulous and his prices are very fair.",
-            service_type: 'Cabinets',
-          },
-          {
-            id: '3',
-            name: 'Emily Rodriguez',
-            rating: 5,
-            comment: "Best plumber in the neighborhood! Fixed our bathroom pipes and even gave us tips to prevent future issues.",
-            service_type: 'Plumbing',
-          },
-          {
-            id: '4',
-            name: 'David Thompson',
-            rating: 5,
-            comment: "Chi painted our entire house interior. The attention to detail is incredible. Worth every penny!",
-            service_type: 'Painting',
-          },
-        ]);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchTestimonials = async () => {
+  //     try {
+  //       const response = await axios.get(`${API}/testimonials`);
+  //       setTestimonials(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching testimonials:', error);
+  //       // Fallback data
+  //       setTestimonials([
+  //         {
+  //           id: '1',
+  //           name: 'Sarah Johnson',
+  //           rating: 5,
+  //           comment: "Chi fixed our leaking roof in no time! Professional, affordable, and the quality is outstanding. Highly recommend!",
+  //           service_type: 'Roof Repair',
+  //         },
+  //         {
+  //           id: '2',
+  //           name: 'Michael Chen',
+  //           rating: 5,
+  //           comment: "Our kitchen cabinets look brand new after Chi's work. He's meticulous and his prices are very fair.",
+  //           service_type: 'Cabinets',
+  //         },
+  //         {
+  //           id: '3',
+  //           name: 'Emily Rodriguez',
+  //           rating: 5,
+  //           comment: "Best plumber in the neighborhood! Fixed our bathroom pipes and even gave us tips to prevent future issues.",
+  //           service_type: 'Plumbing',
+  //         },
+  //         {
+  //           id: '4',
+  //           name: 'David Thompson',
+  //           rating: 5,
+  //           comment: "Chi painted our entire house interior. The attention to detail is incredible. Worth every penny!",
+  //           service_type: 'Painting',
+  //         },
+  //       ]);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    fetchTestimonials();
-  }, []);
+  //   fetchTestimonials();
+  // }, []);
+
+  useEffect(() => {
+  // 1. Show fallback immediately
+  setTestimonials(FALLBACK_TESTIMONIALS);
+  setLoading(false);
+
+  // 2. Fetch backend in background
+  const fetchTestimonials = async () => {
+    try {
+      const response = await axios.get(`${API}/testimonials`);
+      setTestimonials(response.data);
+    } catch (error) {
+      console.error("Error fetching testimonials:", error);
+      // Fallback already displayed
+    }
+  };
+
+  fetchTestimonials();
+}, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
