@@ -8,6 +8,7 @@ import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { FooterBadge } from "@/components/FooterBadge";
 
 const HomePage = () => {
   return (
@@ -21,6 +22,7 @@ const HomePage = () => {
         <Contact />
       </main>
       <Footer />
+      <FooterBadge />
     </div>
   );
 };
